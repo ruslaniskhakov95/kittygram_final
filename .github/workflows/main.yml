@@ -40,6 +40,10 @@ jobs:
           POSTGRES_DB: django_db
           DB_HOST: 127.0.0.1
           DB_PORT: 5432
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          HOST_IP: ${{ secrets.HOST }}
+          HOST_DOMAIN: ${{ secrets.HOST_NAME }}
+          DEBUG: False
         run: |
           python3 -m flake8 backend/
           pytest
