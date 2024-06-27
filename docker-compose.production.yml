@@ -11,6 +11,7 @@ services:
     env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
+
   backend:
     image: ruslaniskhakov/kittygram_backend
     env_file: .env
@@ -19,12 +20,14 @@ services:
       - media:/media
     depends_on:
       - db
+
   frontend:
     image: ruslaniskhakov/kittygram_frontend
     env_file: .env
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
+
   gateway:
     image: ruslaniskhakov/kittygram_gateway
     env_file: .env
@@ -33,3 +36,6 @@ services:
     volumes:
       - static:/static
       - media:/media
+    depends_on:
+      - backend
+      - frontend
