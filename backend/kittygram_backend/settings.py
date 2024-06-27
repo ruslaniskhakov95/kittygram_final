@@ -1,16 +1,15 @@
-# flake8: noqa
 import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY', '')
+SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = False
+DEBUG = os.environ['DEBUG']
 
 ALLOWED_HOSTS = [
-    os.getenv('HOST_DOMAIN', ''),
-    os.getenv('HOST_IP', ''),
+    os.environ['HOST_DOMAIN'],
+    os.environ['HOST_IP'],
     'localhost',
 ]
 
